@@ -1,8 +1,18 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import { UserAPI } from './services/user';
 
 function App() {
+  const fetchUsers = async () => {
+    const users = await UserAPI.getUsers();
+    console.log('user', users);
+  };
+
+  useEffect(() => {
+    fetchUsers();
+  }, []);
+
   return (
     <div className="App">
       <header className="App-header">
