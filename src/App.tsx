@@ -1,12 +1,15 @@
-import React, { useEffect } from 'react';
-import logo from './logo.svg';
+import { useEffect, useState } from 'react';
 import './App.css';
 import { UserAPI } from './services/user';
+import { User } from './types/user';
+import List from './components/List';
 
 function App() {
+  const [users, setUsers] = useState<User[]>([]);
+
   const fetchUsers = async () => {
     const users = await UserAPI.getUsers();
-    console.log('user', users);
+    setUsers(users);
   };
 
   useEffect(() => {
@@ -15,20 +18,10 @@ function App() {
 
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <List
+        data={users}
+        itemContent={(index, item: User) => <div key={index}>{item.name}</div>}
+      />
     </div>
   );
 }
