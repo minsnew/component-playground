@@ -1,4 +1,4 @@
-import { userHandlers } from './user';
+import { userHandlers } from './users';
 
 const handlers = [...userHandlers];
 
