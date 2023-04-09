@@ -1,7 +1,6 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import MainPage from './pages/Main'
 import NotFoundPage from './pages/NotFound'
-import './App.css'
 
 const App = () => {
   return (
