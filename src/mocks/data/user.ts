@@ -14,8 +14,8 @@ export const generateUser = (): User => {
     lastName: faker.name.lastName(),
     createdAt,
     updatedAt: createdAt,
-    email: isRandomTrue() ? faker.internet.email() : undefined,
-    phoneNumber: isRandomTrue() ? faker.phone.number() : undefined,
+    email: faker.internet.email(),
+    phoneNumber: faker.phone.number(),
     avatar: isRandomTrue() ? faker.image.avatar() : undefined,
   }
 }
