@@ -1,4 +1,6 @@
 import { User } from '@/common/models/user'
+import AppBar from '@/components/AppBar'
+import ContentWrapper from '@/containers/ContentWrapper'
 import { UserAPI } from '@/service/api/users'
 import { useEffect, useState } from 'react'
 
@@ -19,14 +21,16 @@ const MainPage = () => {
   }, [])
 
   return (
-    <div>
-      <div className="text-3xl font-bold">Main Page</div>
-      <div>
-        {users.map((user) => (
-          <div key={user.id}>{user.lastName}</div>
-        ))}
-      </div>
-    </div>
+    <>
+      <AppBar />
+      <ContentWrapper>
+        <div className="p-4">
+          {users.map((user) => (
+            <div key={user.id}>{user.lastName}</div>
+          ))}
+        </div>
+      </ContentWrapper>
+    </>
   )
 }
 

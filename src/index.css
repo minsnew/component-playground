@@ -6,4 +6,16 @@ html,
 body {
   padding: 0;
   margin: 0;
+  font-family: -apple-system, system-ui, Roboto, 'Apple SD Gothic Neo',
+    'Noto Sans KR', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol',
+    sans-serif;
+}
+
+#root {
+  width: 100%;
+  height: 100%;
+}
+
+.page-content {
+  padding-top: 63px; /* fixed header 영역 */
 }
