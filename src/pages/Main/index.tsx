@@ -20,7 +20,7 @@ const MainPage = () => {
 
   return (
     <div>
-      <div>Main Page</div>
+      <div className="text-3xl font-bold">Main Page</div>
       <div>
         {users.map((user) => (
           <div key={user.id}>{user.lastName}</div>
