@@ -1,10 +1,26 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
+import { UserAPI } from './service/api/users'
+import { User } from './common/models/user'
 
 const App = () => {
   const [count, setCount] = useState(0)
+  const [users, setUsers] = useState<User[]>([])
+
+  const fetchUsers = async () => {
+    try {
+      const { data } = await UserAPI.getUsers()
+      setUsers(data)
+    } catch (error) {
+      console.error('Failed to fetch users', error)
+    }
+  }
+
+  useEffect(() => {
+    fetchUsers()
+  }, [])
 
   return (
     <div className="App">
@@ -28,6 +44,12 @@ const App = () => {
       <p className="read-the-docs">
         Click on the Vite and React logos to learn more
       </p>
+
+      <div>
+        {users.map((user) => (
+          <div key={user.id}>{user.lastName}</div>
+        ))}
+      </div>
     </div>
   )
 }
